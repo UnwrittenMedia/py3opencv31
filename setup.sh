@@ -19,7 +19,6 @@ apt-get install  -y \
   liblcms2-dev \
   libopenexr-dev \
   libtbb-dev \
-  libvtk6-dev \
   libwebp-dev \
   nginx-full \
   nodejs \
@@ -33,7 +32,6 @@ apt-get install  -y \
   python3-setuptools \
   python3-pip \
   python3-tk \
-  qt5-default \
   s3cmd \
   tcl8.6-dev \
   tk8.6-dev \
@@ -76,7 +74,8 @@ unzip /tmp/opencv.zip
 cd opencv-3.1.0
 mkdir -p build
 cd build
-cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..
+#cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..
+cmake -DWITH_QT=OFF -DWITH_OPENGL=OFF -DFORCE_VTK=OFF -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=OFF ..
 make -j4
 sudo make install
 sudo ldconfig
@@ -86,3 +85,4 @@ sudo ldconfig
 ## Clean up
 apt-get clean
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+rm -rf /opt/opencv/opencv-3.1.0/build/modules/
